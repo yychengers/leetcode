@@ -1,3 +1,5 @@
+const url = 'https://leetcode-cn.com/problems/two-sum/';
+
 /**
  * map结构搞一下 一层循环 时间复杂度 O(n);
  */
