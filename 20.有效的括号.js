@@ -28,4 +28,40 @@ var isValid = function (s) {
 };
 // @lc code=end
 
-console.log(isValid('a'));
+// console.log(isValid('a'));
+
+/**
+ * 栈的操作实验
+ */
+const stackTest = () => {
+  const stack = [];
+  stack.push(1);
+  stack.push(2);
+
+  console.log(stack);
+  console.log(stack.pop());
+
+  console.log(stack);
+};
+
+// stackTest();
+
+const mapTest = (s) => {
+  const stack = [];
+  const map = {
+    '{': '}',
+    '(': ')',
+    '[': ']',
+  };
+  for (const x of s) {
+    if (x in map) {
+      stack.push(x);
+      continue;
+    }
+    console.log(stack, 'stack');
+    if (map[stack.pop()] !== x) return false;
+  }
+  return !stack.length;
+};
+
+console.log(mapTest('{}()[]'));
