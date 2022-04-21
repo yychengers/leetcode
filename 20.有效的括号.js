@@ -64,4 +64,17 @@ const mapTest = (s) => {
   return !stack.length;
 };
 
-console.log(mapTest('{}()[]'));
+// console.log(mapTest('{}()[]'));
+
+const someOther = (s) => {
+  const length = s.length / 2;
+  console.log(length, 'length');
+  for (let i = 0; i < length; i++) {
+    console.log(s, 's');
+    s = s.replace('()', '').replace('{}', '').replace('[]', '');
+  }
+
+  return s.length == 0;
+};
+
+console.log(someOther('([{}()])'));
