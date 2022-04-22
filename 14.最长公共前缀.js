@@ -36,10 +36,39 @@ var longestCommonPrefix = function (strs) {
     }
   }
   return prefix;
+
+  // ---------------
+
+  // let ans = '';
+  // for (const ch of strs[0]) {
+  //   if (
+  //     !strs.every((str) => {
+  //       console.log(ch, 'ch');
+  //       return str.startsWith(ans + ch);
+  //     })
+  //   ) {
+  //     break;
+  //   }
+  //   ans += ch;
+  // }
+  // return ans;
 };
 // @lc code=end
+
+// --------------------
 
 let strs = ['flower', 'flow', 'flight']; // 输出 fl
 // let strs = ['dog', 'racecar', 'car']; // 输出 ''
 
 console.log(longestCommonPrefix(strs));
+
+const testFor = () => {
+  for (var i = 0; i < 10; i++) {
+    if (i === 3) {
+      break;
+    }
+    console.log(i, 'ii');
+  }
+};
+
+// testFor();
