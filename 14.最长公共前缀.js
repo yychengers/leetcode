@@ -10,32 +10,32 @@
  * @return {string}
  */
 var longestCommonPrefix = function (strs) {
-  if (strs == null || !strs.length) return '';
+  // if (strs == null || !strs.length) return '';
 
-  let prefix = strs[0];
-  let n = strs.length;
+  // let prefix = strs[0];
+  // let n = strs.length;
 
-  // 先求出任意两个字符串的最小长度
-  const getLongest = (str1, str2) => {
-    let minLength = Math.min(str1.length, str2.length);
-    let commonIndex = 0;
-    while (
-      commonIndex <= minLength &&
-      str1[commonIndex] === str2[commonIndex]
-    ) {
-      commonIndex++;
-    }
-    return str1.substr(0, commonIndex);
-  };
+  // // 先求出任意两个字符串的最小长度
+  // const getLongest = (str1, str2) => {
+  //   let minLength = Math.min(str1.length, str2.length);
+  //   let commonIndex = 0;
+  //   while (
+  //     commonIndex <= minLength &&
+  //     str1[commonIndex] === str2[commonIndex]
+  //   ) {
+  //     commonIndex++;
+  //   }
+  //   return str1.substr(0, commonIndex);
+  // };
 
-  // 循环遍历strs数组，任一个跟之前最小的prefix比较，赋值prefix为其中较小的
-  for (var i = 1; i < strs.length; i++) {
-    prefix = getLongest(prefix, strs[i]);
-    if (!prefix.length) {
-      return prefix;
-    }
-  }
-  return prefix;
+  // // 循环遍历strs数组，任一个跟之前最小的prefix比较，赋值prefix为其中较小的
+  // for (var i = 1; i < strs.length; i++) {
+  //   prefix = getLongest(prefix, strs[i]);
+  //   if (!prefix.length) {
+  //     return prefix;
+  //   }
+  // }
+  // return prefix;
 
   // ---------------
 
@@ -52,6 +52,19 @@ var longestCommonPrefix = function (strs) {
   //   ans += ch;
   // }
   // return ans;
+
+  // ---------------
+
+  let end = 0;
+  while (
+    strs.every((item) => {
+      console.log(item, 'item');
+      return end < item.length && strs[0][end] === item[end];
+    })
+  ) {
+    end++;
+  }
+  return strs[0].slice(0, end);
 };
 // @lc code=end
 
@@ -60,15 +73,23 @@ var longestCommonPrefix = function (strs) {
 let strs = ['flower', 'flow', 'flight']; // 输出 fl
 // let strs = ['dog', 'racecar', 'car']; // 输出 ''
 
-console.log(longestCommonPrefix(strs));
+// console.log(longestCommonPrefix(strs));
 
-const testFor = () => {
-  for (var i = 0; i < 10; i++) {
-    if (i === 3) {
-      break;
-    }
-    console.log(i, 'ii');
-  }
-};
+// const testFor = () => {
+//   for (var i = 0; i < 10; i++) {
+//     if (i === 3) {
+//       break;
+//     }
+//     console.log(i, 'ii');
+//   }
+// };
 
 // testFor();
+
+const testEvery = (strs) => {
+  const isEvery = strs.every((str) => str.length > 3);
+  console.log(isEvery, 'isevery');
+};
+
+let str = ['ab', 'ac', 'a'];
+testEvery(str);
