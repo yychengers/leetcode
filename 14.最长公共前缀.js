@@ -10,7 +10,32 @@
  * @return {string}
  */
 var longestCommonPrefix = function (strs) {
-  return strs;
+  if (strs == null || !strs.length) return '';
+
+  let prefix = strs[0];
+  let n = strs.length;
+
+  // 先求出任意两个字符串的最小长度
+  const getLongest = (str1, str2) => {
+    let minLength = Math.min(str1.length, str2.length);
+    let commonIndex = 0;
+    while (
+      commonIndex <= minLength &&
+      str1[commonIndex] === str2[commonIndex]
+    ) {
+      commonIndex++;
+    }
+    return str1.substr(0, commonIndex);
+  };
+
+  // 循环遍历strs数组，任一个跟之前最小的prefix比较，赋值prefix为其中较小的
+  for (var i = 1; i < strs.length; i++) {
+    prefix = getLongest(prefix, strs[i]);
+    if (!prefix.length) {
+      return prefix;
+    }
+  }
+  return prefix;
 };
 // @lc code=end
 
